@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LEGO Batman: Legacy of the Dark Knight 全任务攻略 — 序章+6章22个剧情任务详细流程，包含收集品位置、隐藏要素、Boss触发条件。">
+<title>LEGO Batman 全任务攻略 | Mission Guide</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8394945879571540"
+     crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg: #08080d;
+    --bg-card: #101018;
+    --bg-elevated: #181825;
+    --border: #1e1e32;
+    --text: #c0c0cc;
+    --text-dim: #6e6e82;
+    --accent: #f0b828;
+    --accent2: #3b7fba;
+    --red: #e0454a;
+    --green: #4dc987;
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    background-image:
+      radial-gradient(ellipse at 15% 5%, rgba(240, 184, 40, 0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 95%, rgba(59, 127, 186, 0.04) 0%, transparent 55%);
+    background-attachment: fixed;
+  }
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(8, 8, 13, 0.9);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px; padding: 0 24px;
+  }
+  .nav-logo {
+    font-size: 17px; font-weight: 800; letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--accent), #fff 60%, var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+  }
+  .nav-links { display: flex; gap: 16px; list-style: none; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--text-dim); text-decoration: none;
+    font-size: 13px; transition: color 0.2s; white-space: nowrap;
+    padding: 4px 0; border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 64px 0; }
+  .section-alt { background: rgba(255,255,255,0.01); }
+  .section-title {
+    font-size: 28px; font-weight: 700; text-align: center;
+    margin-bottom: 8px; letter-spacing: 1px;
+  }
+  .section-subtitle { text-align: center; color: var(--text-dim); font-size: 14px; margin-bottom: 40px; }
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 11px; font-weight: 500; margin: 2px;
+  }
+  .tag-boss { background: rgba(224, 69, 74, 0.15); color: var(--red); font-weight: 600; }
+  .tag-item { background: rgba(240, 184, 40, 0.12); color: var(--accent); }
+  .tag-story { background: rgba(59, 127, 186, 0.12); color: var(--accent2); }
+  .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .accordion-header {
+    padding: 18px 24px; background: var(--bg-card);
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none; transition: background 0.2s;
+  }
+  .accordion-header:hover { background: var(--bg-elevated); }
+  .accordion-header h3 { font-size: 17px; color: #fff; display: flex; align-items: center; gap: 10px; }
+  .accordion-header .arrow { color: var(--accent); transition: transform 0.3s; font-size: 14px; }
+  .accordion.open .accordion-header .arrow { transform: rotate(90deg); }
+  .accordion-body {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    background: rgba(0,0,0,0.2);
+  }
+  .accordion.open .accordion-body { max-height: 8000px; }
+  .accordion-content { padding: 20px 24px; }
+  .info-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  .info-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .info-table td:first-child { color: var(--accent); font-weight: 600; width: 140px; white-space: nowrap; }
+  .step-list { counter-reset: step; list-style: none; padding: 0; }
+  .step-list li {
+    counter-increment: step; padding: 8px 0 8px 36px; position: relative;
+    color: var(--text-dim); font-size: 14px; line-height: 1.8;
+  }
+  .step-list li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 8px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(240, 184, 40, 0.15); color: var(--accent);
+    font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tip-box {
+    background: rgba(240, 184, 40, 0.06); border: 1px solid rgba(240, 184, 40, 0.2);
+    border-radius: var(--radius); padding: 16px 20px; margin: 16px 0;
+    font-size: 14px;
+  }
+  .tip-box strong { color: var(--accent); }
+  .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 13px; }
+  .page-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 48px; padding-top: 20px;
+    border-top: 1px solid var(--border); gap: 12px; flex-wrap: wrap;
+  }
+  .page-nav a {
+    color: var(--accent); text-decoration: none; font-size: 13px;
+    padding: 8px 16px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--bg-card);
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+  }
+  .page-nav a:hover { border-color: var(--accent); color: #fff; background: var(--bg-elevated); }
+  .page-nav .nav-center-group { display: flex; gap: 8px; }
+  .nav-all { color: var(--accent2); border-color: rgba(59, 127, 186, 0.25); }
+  .nav-all:hover { border-color: var(--accent2); color: var(--accent2); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .section { padding: 40px 0; }
+    .accordion-header h3 { font-size: 15px; }
+    .info-table td:first-child { width: 80px; }
+    .page-nav { flex-direction: column; align-items: stretch; text-align: center; }
+    .page-nav .nav-center-group { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">LEGO BATMAN · GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="story.html">Story</a></li>
+      <li><a href="missions.html" class="active">Missions</a></li>
+      <li><a href="bosses.html">Bosses</a></li>
+      <li><a href="collectibles.html">Collectibles</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="section section-alt" id="missions">
+  <div class="container">
+    <h2 class="section-title">完整任务攻略</h2>
+    <p class="section-subtitle">序章 + 6 章 · 22 个剧情任务 · 点击标题展开</p>
+
+    <!-- Prologue -->
+    <div class="accordion" style="margin-bottom:14px;">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent2);">Prologue</span> 蝙蝠侠：元年 <span class="tag tag-story">4 Missions</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>Wayne Manor Grounds（教程）→ Falcone Confrontation（战斗教程）→ The League of Shadows（训练）→ Infiltration（Ra's al Ghul Boss战）</td></tr>
+            <tr><td>收集品</td><td>Infiltration: <strong>1 Red Brick (Ninja)</strong> + <strong>5 Bonsai Trees</strong></td></tr>
+            <tr><td>新能力</td><td>Grapple、Batarang、Stealth Takedown、Focus Takedown</td></tr>
+            <tr><td>预计时间</td><td>~1.5–2 小时</td></tr>
+          </table>
+          <h4 style="color:#fff; margin:20px 0 10px;">剧情要点</h4>
+          <ol class="step-list">
+            <li><strong>Wayne Manor Grounds：</strong>纯教程，但充满环境叙事——年幼 Bruce 收集自制服装碎片（斗篷、护目镜、帽子），预示即将到来的戏剧性。Bruce 房间墙上的《灰幽灵》海报是 TAS 的深度致敬。</li>
+            <li><strong>Falcone Confrontation：</strong>Bruce 被打得很惨——这是《侠影之谜》的节点：没有纪律的愤怒毫无用处。战斗教程是剧情性的——Bruce 切实体会到自己需要训练。</li>
+            <li><strong>The League of Shadows：</strong>与 Talia 一起爬雪山、战斗训练、潜行训练、装备训练。Bruce 见到 Ra's al Ghul，汲取影武者联盟的纪律却拒绝他们的极端主义。</li>
+            <li><strong>Infiltration：</strong>Bruce 发现 Ra's al Ghul 对哥谭的真正计划，拒绝处决俘虏（决定性道德时刻），在坍塌的寺庙中与 Ra's 进行两阶段 Boss 战。他逃脱并返回哥谭——<strong>蝙蝠侠诞生了</strong>。</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 1 -->
+    <div class="accordion" style="margin-bottom:14px;">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent);">Chapter 1</span> 蝙蝠侠崛起 <span class="tag tag-boss">Boss: Carmine Falcone</span> <span class="tag tag-story">新盟友: Jim Gordon</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>New Beginnings → Tricorner Investigation → Riddler → Carmine Falcone（Iceberg Lounge）→ Wayne Industries（5子任务）→ The Red Hood Gang（Ace Chemicals）</td></tr>
+            <tr><td>收集品</td><td>New Beginnings: Red Brick (Nautical) + 5 Surfboards; Falcone: Red Brick (Filthy Rich) + 5 Disco Balls + 5 WayneTech Caches; Red Hood Gang: Red Brick (Toxic Waste) + 5 Ace Cards + 5 WayneTech Caches</td></tr>
+            <tr><td>关键细节</td><td style="color:var(--accent);">Iceberg Lounge 金库密码: <strong>596</strong></td></tr>
+            <tr><td>故事线</td><td>Bruce 发现蝙蝠洞、造出第一辆蝙蝠车、与 Gordon 结盟、摧毁 Falcone 的运作，并在 Ace 化工厂意外创造了小丑。<strong>Jack Napier 与韦恩谋杀案关联</strong>——贯穿全游戏的 Burton 风格线索。</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="accordion" style="margin-bottom:14px;">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent);">Chapter 2</span> 猫与蝙蝠 <span class="tag tag-boss">Boss: Joker</span> <span class="tag tag-story">新盟友: Catwoman</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>Mimes（Shreck's 百货）→ The Penguin（Arctic World）→ Flugelheim → Joker（Parade）</td></tr>
+            <tr><td>收集品</td><td>Mimes: Red Brick (Feline) + 5 Cat Heads + 5 WayneTech Caches; Penguin: Red Brick (Gothic) + 5 Rubber Ducks + 5 WayneTech Caches; Flugelheim: Red Brick + 5 Boomboxes; Joker: Red Brick + 5 Cakes + 5 WayneTech Caches</td></tr>
+            <tr><td>故事线</td><td>猫女作为混乱中立力量登场——最初偷了 Gordon 的 Batclaw，但最终成为盟友。Harvey Dent 在 Mimes 袭击中受伤（为双面人埋下伏笔）。Joker 的游行计划——Smilex 毒气袭击人群——是本章高潮。他被送入阿卡姆，但<b>阿卡姆是反派滋生的地方，不是被治愈的地方</b>。</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 3 -->
+    <div class="accordion" style="margin-bottom:14px;">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent);">Chapter 3</span> 活力双雄 <span class="tag tag-boss">Bosses: Two-Face / Kite Man / Poison Ivy</span> <span class="tag tag-story">新盟友: Robin</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>Two-Face（Haly's Circus）→ Kite Man（Power Plant）→ Poison Ivy（Botanical Gardens）</td></tr>
+            <tr><td>收集品</td><td>Two-Face: Red Brick + 5 Coins; Kite Man: Red Brick + 5 Kites; Poison Ivy: Red Brick + 5 Venus Fly Traps + 5 WayneTech Caches</td></tr>
+            <tr><td>故事线</td><td>Harvey Dent 转变为双面人。Dick Grayson 在哈利马戏团登场——在家庭友好改编中他的父母没有死；他只是搞砸了表演，决定加入 Bruce。<strong>这是转折点</strong>：Bruce 不再是独行复仇者，成为导师。毒藤女的植物型敌人弱火属性武器。</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 4 -->
+    <div class="accordion" style="margin-bottom:14px;">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent);">Chapter 4</span> 蝙蝠家族壮大 <span class="tag tag-boss">Bosses: Firefly / Mr. Freeze</span> <span class="tag tag-story">新盟友: Batgirl &amp; Nightwing</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>Firefly（Museum）→ Batgirl Begins → Mr. Freeze（Observatory）→ Nightwing 过渡</td></tr>
+            <tr><td>收集品</td><td>Firefly: Red Brick + 5 Spaceships + 5 WayneTech Caches; Mr. Freeze: Red Brick + 5 Snow Globes</td></tr>
+            <tr><td>故事线</td><td>Barbara Gordon 的蝙蝠女孩起源任务与主线并行——她不是被招募的；她<b>选择</b>自行穿上战衣。Dick Grayson 从罗宾进化为夜翼，标志着时间流逝和首位学徒的成长。急冻人是搞笑的 Arnold 风格，但冰封妻子故事线在冰之双关语之间蕴含真实悲情。</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 5 -->
+    <div class="accordion" style="margin-bottom:14px;">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent);">Chapter 5</span> 阿卡姆陷落 <span class="tag tag-boss">Boss: Bane (Round 1)</span> <span class="tag tag-story">新盟友: Talia al Ghul</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>Tumbler Chase → Arkham Asylum（Seeing is Believing / A Dog Chasing Cars / A Serious House...）</td></tr>
+            <tr><td>关键</td><td style="color:var(--red);">Bane 是三阶段解谜 Boss——标准近战无效。必须摧毁他背上的 Venom 管。详见 <a href="bosses.html#bane" style="color:var(--accent);">Boss 攻略页</a>。</td></tr>
+            <tr><td>故事线</td><td>Joker 的影响力将阿卡姆推入完全混乱。Tumbler 追逐直接致敬 Nolan。Talia al Ghul 再次登场——<b>她选择了蝙蝠侠的道路而非她父亲的</b>，暗示影武者联盟的回归即将来临。</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 6 -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:var(--accent);">Chapter 6</span> 影武者联盟归来 <span class="tag tag-boss">Final Boss: Bane</span> <span class="tag tag-story">完整蝙蝠家族</span></h3>
+        <span class="arrow">▸</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <table class="info-table">
+            <tr><td>任务</td><td>A Shadow Over Gotham → Bane: Round 2 → The Dark Knight Returns</td></tr>
+            <tr><td>收集品</td><td>Red Brick + 5 League Banners + 5 WayneTech Caches</td></tr>
+            <tr><td>通关解锁</td><td style="color:var(--accent);">Free Play 模式、Batcomputer 任务重玩、全角色解锁、Bat-Mite 完整商店、Dark Knight 难度、所有 Batcave 挑战</td></tr>
+            <tr><td>故事线</td><td>哥谭被占领——韦恩塔改为"Bane Tower"。完整的蝙蝠家族穿过被占领的街道、地铁隧道和塔楼本身。游戏以<b>原创结局</b>收尾，颠覆了预期情节转折。Talia 永久性站到蝙蝠侠一方。<strong>传承完成：蝙蝠侠不再是一个人，而是一种理念、一个家庭、一个超越自身的网络。</strong></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="page-nav">
+    <a href="story.html">◂ 上一章：Story</a>
+    <span class="nav-center-group">
+      <a href="bosses.html">下一章：Bosses ▸</a>
+    </span>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>LEGO Batman: Legacy of the Dark Knight 攻略指南 · 玩家社区整理</p>
+  <p style="margin-top:4px;">LEGO BATMAN © DC &amp; Warner Bros. Entertainment Inc. LEGO © The LEGO Group · 本站仅供玩家参考</p>
+</footer>
+
+</body>
+</html>

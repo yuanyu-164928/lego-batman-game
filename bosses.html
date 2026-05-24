@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LEGO Batman: Legacy of the Dark Knight 全 Boss 攻略 — Ra's al Ghul、Bane、Joker、Mr. Freeze、Two-Face、Poison Ivy 弱点分析、阶段机制、推荐配装。">
+<title>LEGO Batman 全 Boss 攻略 | 弱点与打法详解</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8394945879571540"
+     crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg: #08080d;
+    --bg-card: #101018;
+    --bg-elevated: #181825;
+    --border: #1e1e32;
+    --text: #c0c0cc;
+    --text-dim: #6e6e82;
+    --accent: #f0b828;
+    --accent2: #3b7fba;
+    --red: #e0454a;
+    --green: #4dc987;
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    background-image:
+      radial-gradient(ellipse at 15% 5%, rgba(240, 184, 40, 0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 95%, rgba(59, 127, 186, 0.04) 0%, transparent 55%);
+    background-attachment: fixed;
+  }
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(8, 8, 13, 0.9);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px; padding: 0 24px;
+  }
+  .nav-logo {
+    font-size: 17px; font-weight: 800; letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--accent), #fff 60%, var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+  }
+  .nav-links { display: flex; gap: 16px; list-style: none; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--text-dim); text-decoration: none;
+    font-size: 13px; transition: color 0.2s; white-space: nowrap;
+    padding: 4px 0; border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 64px 0; }
+  .section-alt { background: rgba(255,255,255,0.01); }
+  .section-title {
+    font-size: 28px; font-weight: 700; text-align: center;
+    margin-bottom: 8px; letter-spacing: 1px;
+  }
+  .section-subtitle { text-align: center; color: var(--text-dim); font-size: 14px; margin-bottom: 40px; }
+  .boss-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 3px solid var(--red); border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 24px; margin-bottom: 20px;
+  }
+  .boss-card h4 { font-size: 17px; color: #fff; margin-bottom: 8px; }
+  .boss-card .boss-location { color: var(--accent); font-size: 13px; margin-bottom: 12px; }
+  .info-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  .info-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .info-table td:first-child { color: var(--accent); font-weight: 600; width: 140px; white-space: nowrap; }
+  .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 13px; }
+  .page-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 48px; padding-top: 20px;
+    border-top: 1px solid var(--border); gap: 12px; flex-wrap: wrap;
+  }
+  .page-nav a {
+    color: var(--accent); text-decoration: none; font-size: 13px;
+    padding: 8px 16px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--bg-card);
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+  }
+  .page-nav a:hover { border-color: var(--accent); color: #fff; background: var(--bg-elevated); }
+  .page-nav .nav-center-group { display: flex; gap: 8px; }
+  .nav-all { color: var(--accent2); border-color: rgba(59, 127, 186, 0.25); }
+  .nav-all:hover { border-color: var(--accent2); color: var(--accent2); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .section { padding: 40px 0; }
+    .info-table td:first-child { width: 80px; }
+    .page-nav { flex-direction: column; align-items: stretch; text-align: center; }
+    .page-nav .nav-center-group { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">LEGO BATMAN · GUIDE</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="story.html">Story</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="bosses.html" class="active">Bosses</a></li>
+      <li><a href="collectibles.html">Collectibles</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="section section-alt" id="bosses">
+  <div class="container">
+    <h2 class="section-title">Boss 攻略</h2>
+    <p class="section-subtitle">弱点分析、阶段机制与推荐配装</p>
+
+    <div class="boss-card">
+      <h4 id="ras">Ra's al Ghul — 序章：Infiltration</h4>
+      <div class="boss-location">影武者联盟 · 喜马拉雅神庙</div>
+      <table class="info-table">
+        <tr><td>阶段</td><td><strong>2 阶段</strong>（寺庙决斗 → 寺庙逃脱混战）</td></tr>
+        <tr><td>推荐</td><td>满级蝙蝠镖、Focus Boost、Perfect Counter</td></tr>
+        <tr><td>第一阶段</td><td>Ra's 消失于烟雾中，以手里剑投掷或旋转刀刃冲锋重现。和普通忍者不同，<strong>Ra's 可在旋转中重新定向</strong>——需要闪避<em>多次</em>而不仅一次。最佳时机：闪避他的手里剑齐射后立刻发射三枚蝙蝠镖——几乎总能击晕他以进行连击。</td></tr>
+        <tr><td>第二阶段</td><td>寺庙坍塌。Ra's 带着<b>八名忍者</b>（刀+手里剑型）回归，同时石头从天花板坠落。<b>不要浪费时间去清小兵</b>——他会不断召唤新的。用忍者小兵建立连击和 Focus，然后 Focus Takedown Ra's。注意他的<b>5手里剑扇形攻击</b>——翻滚，不要跑。</td></tr>
+      </table>
+    </div>
+
+    <div class="boss-card">
+      <h4 id="bane">Bane — 阿卡姆(第五章) &amp; Bane Tower(第六章)</h4>
+      <div class="boss-location">地下化学车间 / Wayne (Bane) Tower</div>
+      <table class="info-table">
+        <tr><td>核心机制</td><td style="color:var(--red);"><strong>普通近战造成零伤害。</strong>必须摧毁他背上的 Venom 管——这是解谜战，不是 DPS 竞赛。</td></tr>
+        <tr><td>推荐</td><td>Batman Power Suit、Robin Hazard Suit、Explosive Gel</td></tr>
+        <tr><td>第一阶段 (100%–66%)</td><td>站在场边<b>三个带电发电机</b>之一前方。观察他的捶胸动画——这是 Venom Charge 的信号。<b>不要过早闪避</b>——等红色瞄准线闪烁<b>两次</b>再侧滚。Bane 撞上发电机后约 4.5 秒击晕。立刻蝙蝠镖瞄准并切断他背上<b>发绿光的阀门</b>。</td></tr>
+        <tr><td>第二阶段 (66%–33%)</td><td>Bane 用<b>绿色毒液</b>淹没外圈（0.5 心/秒）。切换到<b>Robin 的 Hazard Suit</b>（免疫）。砸碎 4 个绿色化学桶，用跳跳积木拼出<b>毒液炮</b>。等 Bane 的 Debris Throw 动画，然后将炮火射进他脸。蝙蝠侠抓钩冲入并扯出第二根管子。</td></tr>
+        <tr><td>第三阶段 (33%–0%)</td><td>Bane 从房间中央发出<b>三连冲击波地面猛击</b>。<strong>绿色波纹触及角色影子的瞬间双跳</strong>——这提供 8 帧无敌。切换到<b>蝙蝠侠 Power Suit</b>，在发光银色地板板上放置 Explosive Gel，引诱 Bane 走上去，引爆将他弹入最终 QTE 序列。</td></tr>
+      </table>
+    </div>
+
+    <div class="boss-card">
+      <h4 id="joker">Joker — 哥谭游行（第二章）</h4>
+      <div class="boss-location">哥谭市中心 · 感恩节游行路线</div>
+      <table class="info-table">
+        <tr><td>流程</td><td>气球破坏谜题（3 辆游行花车）→ 混合敌人波次 → 空中 QTE 导弹反射 → 最终近战 QTE</td></tr>
+        <tr><td>打法</td><td>每辆花车需要猫女 + 蝙蝠侠合作。第三辆花车后，与近战、手枪、RPG、盾牌和<b>电棍</b>敌人战斗。拼出充气蝙蝠气球，进入空中 QTE 阶段——<b>将导弹反射回 Joker</b>。最终 QTE 链：扯掉假枪 → 摘下眼镜 → 钩住脚踝。这是演出战，享受它。</td></tr>
+      </table>
+    </div>
+
+    <div class="boss-card">
+      <h4 id="freeze">Mr. Freeze — 哥谭天文台（第四章）</h4>
+      <div class="boss-location">哥谭天文台 · 冷冻实验室</div>
+      <table class="info-table">
+        <tr><td>打法</td><td>Freeze 的冰霜爆炸留下<b>持续减速区域</b>。用 Glide Suit 保持空中优势避免地面 AoE。摧毁场地四根冷却管削弱他的冰甲。他唯一的脆弱窗口是<b>冷却剂充能</b>时——蝙蝠镖击晕，然后倾泻火力。他的冷冻光束<b>冻住角色 2 秒</b>——换人无敌帧可以闪避。火焰武器（Flame Batarangs、Explosive Gel）造成额外伤害。</td></tr>
+      </table>
+    </div>
+
+    <div class="boss-card">
+      <h4 id="twoface">Two-Face — 哈利马戏团（第三章）</h4>
+      <div class="boss-location">废弃哈利马戏团 · 大顶竞技场</div>
+      <table class="info-table">
+        <tr><td>打法</td><td>Two-Face 抛硬币决定攻击模式——<strong>正面 = SMG 扫射</strong>（躲到马戏团道具后），<strong>反面 = 棒球棍冲锋</strong>（可用 Perfect Counter 反击）。场地的<b>旋转舞台机制</b>改变地形——摧毁四角的控制台锁定它。当他喊"Let's leave it to chance!"时掷出烟雾弹——他的硬币投掷会失误，给你免费输出窗口。他伤疤侧攻击更激进；绕到未伤疤侧寻找安全机会。</td></tr>
+      </table>
+    </div>
+
+    <div class="boss-card">
+      <h4 id="ivy">Poison Ivy — 植物园（第三章）</h4>
+      <div class="boss-location">哥谭植物园 · 温室</div>
+      <table class="info-table">
+        <tr><td>打法</td><td><strong>火焰武器对所有植物型敌人造成额外伤害</strong>——装备 Flame Batarangs 和 Explosive Gel。Ivy 召唤 Snapdragons（抓取攻击，QTE 逃脱）和有毒孢子云（持续伤害区域）。当她扎根再生时用 Power Suit 的 Explosive Gel 攻击根部。四个角落的火焰喷射器站可激活清孢子云。第二阶段击败她的巨型 Snapdragon 植物怪。</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="page-nav">
+    <a href="missions.html">◂ 上一章：Missions</a>
+    <span class="nav-center-group">
+      <a href="collectibles.html">下一章：Collectibles ▸</a>
+    </span>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>LEGO Batman: Legacy of the Dark Knight 攻略指南 · 玩家社区整理</p>
+  <p style="margin-top:4px;">LEGO BATMAN © DC &amp; Warner Bros. Entertainment Inc. LEGO © The LEGO Group · 本站仅供玩家参考</p>
+</footer>
+
+</body>
+</html>
